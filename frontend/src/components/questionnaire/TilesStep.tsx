@@ -12,7 +12,7 @@ function TilesStep({ answers, onAnswer }: Props) {
     return (
         <div>
             <h2 className="font-heading text-2xl text-text-primary mb-4">What apps do you use?</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-6 max-h-[calc(100vh-10rem)] overflow-y-auto">
                 {Tiles.map((tile) =>
                     <button
                         key={tile.id}

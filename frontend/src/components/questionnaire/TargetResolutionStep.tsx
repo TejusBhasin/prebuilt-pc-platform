@@ -9,9 +9,9 @@ interface Props {
 function TargetResolutionStep({ answers, onAnswer }: Props) {
     const [selected, setSelected] = useState<TargetResolution | null>(answers.targetResolution ?? null)
     const options = [
-        { value: "4k" as TargetResolution, label: "4K (Ultra HD)" },
+        { value: "1080p" as TargetResolution, label: "1080p (Full HD)" },
         { value: "1440p" as TargetResolution, label: "1440p (Quad HD)" },
-        { value: "1080p" as TargetResolution, label: "1080p (Full HD)" }
+        { value: "4k" as TargetResolution, label: "4K (Ultra HD)" }
     ]
     return (
         <div>

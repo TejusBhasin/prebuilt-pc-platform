@@ -1,4 +1,4 @@
-export type SystemCategory =  "desktop" | "laptop" | "mini_pc" | "workstation"
+export type SystemCategory = "desktop" | "laptop" | "mini_pc" | "workstation"
 export type OsPreference = "windows" | "macos" | "linux" | "none"
 export type QuestionnaireStep = "category" | "budget" | "longevity" | "os" | "tiles" | "gaming_style" | "target_resolution" | "ai_model_size" | null
 export type GamingStyle = "regular" | "competitive" | "demanding" | null
@@ -21,14 +21,14 @@ export interface RequirementsProfile {
 }
 
 export interface QuestionnaireAnswers {
-    category: SystemCategory | null;
-    budgetUsd: number | null;
-    longevityYears: number | null;
-    osPreference: OsPreference | null;
-    selectedTileIds: string[];
-    gamingStyle?: GamingStyle;
-    targetResolution?: "1080p" | "1440p" | "4k" | null;
-    aiModelSize?: "small" | "mid" | "large" | null
+  category: SystemCategory | null;
+  budgetUsd: number | null;
+  longevityYears: number | null;
+  osPreference: OsPreference | null;
+  selectedTileIds: string[];
+  gamingStyle?: GamingStyle;
+  targetResolution?: "1080p" | "1440p" | "4k" | null;
+  aiModelSize?: "small" | "mid" | "large" | null
 }
 
 type OsType = "windows" | "macos" | "linux"
@@ -54,7 +54,7 @@ export interface Gpu {
   name: string;
   vramGb: number;
   passmarkScore: number | null;
-  tdpWatts: number| null;
+  tdpWatts: number | null;
   isIntegrated: boolean
 }
 export interface RamConfig {
