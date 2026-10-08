@@ -45,13 +45,13 @@ export default function ResultsPage() {
     }, [])
     if (loading) {
         return (
-            <div className="max-w-5x1 mx-auto px-6 py-10">
+            <div className="max-w-5xl mx-auto px-6 py-10">
                 <p className="font-body text-text-muted">Loading results...</p>
             </div>
         )
     } else if (error) {
         return (
-            <div className="max-w-5x1 mx-auto px-6 py-10">
+            <div className="max-w-5xl mx-auto px-6 py-10">
                 <p className="font-body text-text-primary">Something went wrong: {error}</p>
                 <div className="flex justify-center mt-8">
                     <Link href="/questionnaire" className="border border-accent-teal text-accent-teal font-heading px-4 py-2 hover:bg-accent-teal hover:text-bg transition-colors">
@@ -73,8 +73,8 @@ export default function ResultsPage() {
         )
     } else {
         return (
-            <div className="max-w-3x1 mx-auto px-6 py-10">
-                <h1 className="font-heading text 3x1 text-text-primary mb-6">Results</h1>
+            <div className="max-w-3xl mx-auto px-6 py-10">
+                <h1 className="font-heading text 3xl text-text-primary mb-6">Results</h1>
                 <div className="divide-y divide-hairline">
                     {results?.map((result, index) => (
                         <Link key={result.id} href={`/systems/${result.id}`} className="flex items-center gap-4 py-4">
