@@ -12,6 +12,29 @@ router.get("/", async (c) => {
     return c.json(cpus)
 })
 
+router.get("/options", async (c) => {
+    const cpus = await prisma.cpu.findMany({
+        where: {
+            passmarkScore: { not: null },
+            systemCpus: {
+                some: {
+                    system: {
+                        active: true
+                    }
+                }
+            }
+        },
+        select: {
+            id: true,
+            name: true,
+            passmarkScore: true
+        },
+        orderBy: {
+            passmarkScore: "asc"
+        }
+    })
+    return c.json(cpus)
+})
 router.get("/:id", async (c) => {
     const id = parseInt(c.req.param("id"))
     const cpu = await prisma.cpu.findUnique({

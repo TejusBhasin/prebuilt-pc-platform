@@ -21,10 +21,21 @@ type CategoryAverages = {
   }
 }
 
+type FilterProfile = {
+  category: "desktop" | "laptop" | "mini_pc" | "workstation" | null,
+  osPreference: "windows" | "macos" | "linux" | null,
+  minRamGb: number | null,
+  minVramGb: number | null,
+  minCpuScore: number | null,
+  minStorageGb: number | null,
+  eccRequired: boolean,
+  maxPriceUsd: number | null,
+}
+export type { FilterProfile }
 export type { RequirementsProfile }
 export type { CategoryAverages }
 
-function hardFilter(systems: any[], profile: RequirementsProfile): any[] {
+function hardFilter(systems: any[], profile: RequirementsProfile | FilterProfile): any[] {
   return systems.filter((system) => {
     if (profile.category && system.category !== profile.category) {
       return false

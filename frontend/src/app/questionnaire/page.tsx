@@ -13,8 +13,8 @@ import TilesStep from '@/components/questionnaire/TilesStep';
 import GamingStyleStep from '@/components/questionnaire/GamingStyleStep';
 import TargetResolutionStep from '@/components/questionnaire/TargetResolutionStep';
 import AiModelSizeStep from '@/components/questionnaire/AiModelSizeStep';
-import { error } from 'console';
 import GuidedQuestionnaireLayout from '@/components/questionnaire/GuidedQuestionnaireLayout';
+import FilterStep from '@/components/questionnaire/FilterStep';
 
 export default function QuestionnairePage() {
     const router = useRouter()
@@ -82,8 +82,7 @@ export default function QuestionnairePage() {
             ) : familiarity === null ? (
                 <FamiliarityStep onSelect={handleFamiliarity} />
             ) : familiarity === "high" ? (
-                null
-                //add high step here
+                <FilterStep />
             ) : familiarity === "low" && step !== null ? (
                 <GuidedQuestionnaireLayout step={step}>{renderStep(step)}</GuidedQuestionnaireLayout>
             ) : familiarity === "medium" && step !== null ? (

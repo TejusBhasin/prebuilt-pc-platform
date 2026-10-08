@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import prisma from "../database.js"
-import { rankSystems } from "../engine.js"
+import { hardFilter, rankSystems } from "../engine.js"
 import { CategoryAverages } from "../engine.js"
 
 const router = new Hono()
@@ -80,6 +80,17 @@ router.post("/recommend", async (c) => {
     const rankedList = rankSystems(systemsList, requirementsProfile, categoryAverages)
 
     return c.json(rankedList)
+})
+
+router.post("/systems/filter", async (c) => {
+    const requirementsProfile = await c.req.json()
+    const systemsList = await prisma.system.findMany({
+        where: { active: true },
+        include: systemIncludes
+    })
+
+    const filteredList = hardFilter(systemsList, requirementsProfile)
+    return c.json(filteredList)
 })
 
 router.get("/:id", async (c) => {
