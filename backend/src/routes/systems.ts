@@ -82,7 +82,7 @@ router.post("/recommend", async (c) => {
     return c.json(rankedList)
 })
 
-router.post("/systems/filter", async (c) => {
+router.post("/filter", async (c) => {
     const requirementsProfile = await c.req.json()
     const systemsList = await prisma.system.findMany({
         where: { active: true },
