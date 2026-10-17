@@ -41,6 +41,7 @@ const CATEGORY_OPTIONS: SystemCategory[] = ["desktop", "laptop", "mini_pc", "wor
 
 const OS_OPTIONS: OsType[] = ["windows", "macos", "linux"]
 
+const DEBOUNCE_MS = 300
 function FilterStep() {
     const [filterProfile, setFilterProfile] = useState<FilterProfile>({
         category: null,
@@ -154,9 +155,10 @@ function FilterStep() {
     const [resultsError, setResultsError] = useState<boolean>(false)
     useEffect(() => {
         const controller = new AbortController()
+        const timer = setTimeout(getResults, DEBOUNCE_MS)
+        setResultsLoading(true)
         async function getResults() {
             try {
-                setResultsLoading(true)
                 setResultsError(false)
                 const options = {
                     method: "POST",
@@ -179,9 +181,9 @@ function FilterStep() {
                 setResultsLoading(false)
             }
         } 
-        getResults()
         return (() => {
             controller.abort()
+            clearTimeout(timer)
         })
     }, [filterProfile])
 
