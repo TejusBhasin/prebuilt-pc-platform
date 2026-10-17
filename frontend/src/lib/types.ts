@@ -4,6 +4,7 @@ export type QuestionnaireStep = "category" | "budget" | "longevity" | "os" | "ti
 export type GamingStyle = "regular" | "competitive" | "demanding" | null
 export type TargetResolution = "4k" | "1440p" | "1080p" | null
 export type AiModelSize = "large" | "mid" | "small" | null
+export type OsType = "windows" | "macos" | "linux" 
 
 export interface RequirementsProfile {
   category: SystemCategory | null;
@@ -20,6 +21,17 @@ export interface RequirementsProfile {
   longevityYears: number | null
 }
 
+export type FilterProfile = {
+    category: SystemCategory | null,
+    osPreference: OsType | null,
+    minRamGb: number | null,
+    minVramGb: number | null,
+    minCpuScore: number | null,
+    minStorageGb: number | null,
+    eccRequired: boolean,
+    maxPriceUsd: number | null,
+}
+
 export interface QuestionnaireAnswers {
   category: SystemCategory | null;
   budgetUsd: number | null;
@@ -31,7 +43,6 @@ export interface QuestionnaireAnswers {
   aiModelSize?: "small" | "mid" | "large" | null
 }
 
-type OsType = "windows" | "macos" | "linux"
 export interface Manufacturer {
   id: number;
   name: string;

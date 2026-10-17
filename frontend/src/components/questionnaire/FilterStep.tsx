@@ -1,25 +1,13 @@
 "use client"
 import { useState, useEffect, ChangeEvent } from "react";
-import { SystemCategory, System } from "@/lib/types";
+import { SystemCategory, System, FilterProfile, OsType } from "@/lib/types";
 import Link from "next/link"
-type FilterProfile = {
-    category: "desktop" | "laptop" | "mini_pc" | "workstation" | null,
-    osPreference: "windows" | "macos" | "linux" | null,
-    minRamGb: number | null,
-    minVramGb: number | null,
-    minCpuScore: number | null,
-    minStorageGb: number | null,
-    eccRequired: boolean,
-    maxPriceUsd: number | null,
-}
 
 type CpuOption = {
     id: number,
     passmarkScore: number,
     name: string
 }
-
-type OsType = "windows" | "macos" | "linux" 
 
 type SortOption = "priceAsc" | "priceDesc" | "yearDesc" | "nameAsc" | "nameDesc"
 
