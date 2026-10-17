@@ -242,7 +242,7 @@ function FilterStep() {
     }})
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div className="flex flex-col gap-6 bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
+            <div className="flex flex-col gap-6 bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto scrollbar-gutter: stable min-w-0 w-full">
                 <div className="flex flex-col gap-1">
                 <label className="font-body text-text-muted">Category</label>
                 <select id="categoryOption" value={filterProfile.category ?? ""} onChange={handleCategoryChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">
@@ -305,7 +305,7 @@ function FilterStep() {
                 <input type="checkbox" id="eccOption" checked={filterProfile.eccRequired} onChange={handleEccChange} className="px-3 py-2 accent-accent-copper" />
                 </div>
             </div>
-            <div className="bg-panel border border-hairline rounded-md h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
+            <div className="bg-panel border border-hairline rounded-md h-[calc(100vh-6rem)] overflow-y-auto scrollbar-gutter: stable min-w-0 w-full">
                 <div className="flex items-start pt-6 border-b border-hairline justify-between sticky top-0 bg-panel rounded-t-md px-6 pb-4 z-10">
                     <div className="flex flex-col">
                         <h2 className="font-heading text-text-primary">Results</h2>

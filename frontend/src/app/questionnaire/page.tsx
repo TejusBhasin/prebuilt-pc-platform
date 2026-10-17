@@ -67,9 +67,9 @@ export default function QuestionnairePage() {
     }
 
     return (
-        <div className={`mx-auto px-6 py-8 ${familiarity === "low" || familiarity === "high" ? "max-w-7xl" : "max-w-2xl"}`}>
+        <div className={`mx-auto px-6 py-8 ${familiarity === "low" || familiarity === "high" ? "max-w-7xl w-full" : "max-w-2xl w-full"}`}>
             {!introDismissed ? (
-                <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6 px-6 py-6">
+                <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6">
                     <h1 className="font-heading text-text-primary text-4xl">Computer Recommendation Questionnaire</h1>
                     <p className="font-body text-text-muted max-w-prose">Find your next computer! Answer this ~5 min questionnaire and it will match you with your next computer system. Computer database updated as frequently as possible; might not be current to all market computer.</p>
                     <button
