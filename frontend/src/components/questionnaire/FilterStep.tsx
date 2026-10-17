@@ -21,6 +21,34 @@ type CpuOption = {
 
 type OsType = "windows" | "macos" | "linux" 
 
+type SortOption = "priceAsc" | "priceDesc" | "yearDesc" | "nameAsc" | "nameDesc"
+
+const SORT_LABELS:Record <SortOption, string> = {
+    "priceAsc": "Price (Ascending)",
+    "priceDesc": "Price (Descending)",
+    "yearDesc": "Year (Descending)",
+    "nameAsc": "Name (Ascending)",
+    "nameDesc": "Name (Descending)"
+}
+const SORT_OPTIONS: SortOption[] = [
+    "priceDesc",
+    "priceAsc",
+    "yearDesc",
+    "nameAsc",
+    "nameDesc"
+]
+const CATEGORY_LABELS:Record <SystemCategory, string> = {
+    "desktop": "Desktop",
+    "laptop": "Laptop",
+    "mini_pc": "Mini PC",
+    "workstation": "Workstation"
+}
+const OS_LABELS:Record <OsType, string> = {
+    "linux": "Linux",
+    "macos": "macOS",
+    "windows": "Windows"
+}
+
 const CATEGORY_OPTIONS: SystemCategory[] = ["desktop", "laptop", "mini_pc", "workstation"]
 
 const OS_OPTIONS: OsType[] = ["windows", "macos", "linux"]
@@ -41,6 +69,7 @@ function FilterStep() {
     const [cpuLoadError, setCpuLoadError] = useState<boolean>(false)
     const [cpuLoading, setCpuLoading] = useState<boolean>(true)
     const [selectedCpuId, setSelectedCpuId] = useState<number | null>(null)
+    const [sortOption, setSortOption] = useState<SortOption>("priceAsc")
     useEffect(() => {
         async function getCpuOptions() {
             try {
@@ -58,17 +87,6 @@ function FilterStep() {
         }
         getCpuOptions()
     }, [])
-    function getWrittenCategoryOption(option: string){
-        if(option === "desktop") {
-            return "Desktop"
-        } else if (option === "laptop") {
-            return "Laptop"
-        } else if (option === "mini_pc") {
-            return "Mini PC"
-        } else if (option === "workstation") {
-            return "Workstation"
-        } 
-    }
     function handleCategoryChange(event: ChangeEvent<HTMLSelectElement>) {
         const rawCategoryValue = event.target.value
         if(rawCategoryValue === "") {
@@ -129,15 +147,6 @@ function FilterStep() {
             setFilterProfile(previousProfile => ({ ...previousProfile, osPreference: osValue}))
         }
     }
-    function getWrittenOsOption(option: string) {
-        if(option === "macos") {
-            return "macOS"
-        } else if (option === "windows") {
-            return "Windows"
-        } else if (option === "linux") {
-            return "Linux"
-        }
-    }
     function handleMaxPriceChange(event: ChangeEvent<HTMLInputElement>){
         const rawMaxPriceValue = event.target.value
         if (rawMaxPriceValue === "") {
@@ -187,8 +196,13 @@ function FilterStep() {
             controller.abort()
         })
     }, [filterProfile])
+
+    function handleSortChange(event: ChangeEvent<HTMLSelectElement>) {
+        const sortValue = event.target.value as SortOption
+        setSortOption(sortValue)
+    }
+
     let statusText = ""
-    
     if (resultsError === true) {
         statusText = "An error occurred. Adjust your specs and try again."
     } else if (resultsLoading === true) {
@@ -200,6 +214,32 @@ function FilterStep() {
     } else {
         statusText = `${results.length} results found.`
     }
+
+    const sortedResults = [...results].sort((a: System, b: System) => {
+        switch (sortOption) {
+            case "priceAsc":
+                return a.priceUsd - b.priceUsd
+            case "priceDesc":
+                return b.priceUsd - a.priceUsd
+            case "yearDesc":
+                if (b.releaseYear === null && a.releaseYear === null) {
+                    return 0
+                } else if (a.releaseYear === null) {
+                    return 1
+                } else if (b.releaseYear === null) {
+                    return -1
+                } else {
+                    return b.releaseYear - a.releaseYear
+                }
+            case "nameAsc": 
+                return a.name.localeCompare(b.name)
+            case "nameDesc":
+                return b.name.localeCompare(a.name)
+            default: {
+                const _exhaustiveCheck: never = sortOption
+                return _exhaustiveCheck
+            }
+    }})
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div className="flex flex-col gap-6 bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
@@ -212,7 +252,7 @@ function FilterStep() {
                         key={option}
                         value={option}
                     >
-                        {getWrittenCategoryOption(option)}
+                        {CATEGORY_LABELS[option]}
                     </option>
                 ))}</select>
                 </div>
@@ -252,7 +292,7 @@ function FilterStep() {
                         key={option}
                         value={option}
                     >
-                        {getWrittenOsOption(option)}
+                        {OS_LABELS[option]}
                     </option>
                 ))}</select>
                 </div>
