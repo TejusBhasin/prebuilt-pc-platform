@@ -272,15 +272,15 @@ function FilterStep() {
                 {cpuLoadError && <p className="font-body text-text-muted">Failed to load CPU list</p>}
                 </div>
                 <div className="flex flex-col gap-1">
-                <label className="font-body text-text-muted">VRAM (GB)</label>
+                <label className="font-body text-text-muted">Min VRAM (GB)</label>
                 <input type="number" min={0} id="vramOption" value={filterProfile.minVramGb ?? ""} placeholder="Any" onChange={handleVramChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
                 </div>
                 <div className="flex flex-col gap-1">
-                <label className="font-body text-text-muted">RAM (GB)</label>
+                <label className="font-body text-text-muted">Min RAM (GB)</label>
                 <input type="number" min={0} id="ramOption" value={filterProfile.minRamGb ?? ""} placeholder="Any" onChange={handleRamChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
                 </div>
                 <div className="flex flex-col gap-1">
-                <label className="font-body text-text-muted">Storage (GB)</label>
+                <label className="font-body text-text-muted">Min Storage (GB)</label>
                 <input type="number" min={0} id="storageOption" value={filterProfile.minStorageGb ?? ""} placeholder="Any" onChange={handleStorageChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -304,18 +304,23 @@ function FilterStep() {
                 <label className="font-body text-text-muted">ECC</label>
                 <input type="checkbox" id="eccOption" checked={filterProfile.eccRequired} onChange={handleEccChange} className="px-3 py-2 accent-accent-copper" />
                 </div>
-                {
-                    //<pre>{JSON.stringify(filterProfile, null, 2)}</pre>
-                    //<pre>Results Error: {String(resultsError)}</pre>
-                    //<pre>Results Loading: {String(resultsLoading)}</pre>
-                }
             </div>
-            <div className="bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
-                <h2 className="font-heading text-text-primary">Results</h2>
-               <p className="font-body text-text-muted text-sm mb-4">{statusText}</p>
-                <div className="divide-y divide-hairline">
-                {results.map((result) => (
-                    <Link key={result.id} href={"/systems/" + result.id} className="flex items-center gap-4 py-4">
+            <div className="bg-panel border border-hairline rounded-md h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
+                <div className="flex items-start pt-6 border-b border-hairline justify-between sticky top-0 bg-panel rounded-t-md px-6 pb-4 z-10">
+                    <div className="flex flex-col">
+                        <h2 className="font-heading text-text-primary">Results</h2>
+                        <p className="font-body text-text-muted text-sm">{statusText}</p>
+                    </div>
+                    <div>
+                    {results.length > 0 && <select value={sortOption} onChange={handleSortChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">{SORT_OPTIONS.map((option) => (
+                        <option key={option} value={option}>{SORT_LABELS[option]}</option>
+                    ))}</select>}
+                    </div>
+                </div>
+                
+                <div className="divide-y divide-hairline pb-6">
+                {sortedResults.map((result) => (
+                    <Link key={result.id} href={"/systems/" + result.id} className="flex items-center gap-4 py-4 px-6">
                         <div className="flex flex-col flex-1 gap-1 min-w-0">
                             <div className="flex justify-between items-baseline gap-2">
                                 <h3 className="font-heading text-text-primary">{result.name}</h3>
