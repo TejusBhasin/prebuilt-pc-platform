@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, ChangeEvent } from "react";
 import { SystemCategory, System } from "@/lib/types";
-
+import Link from "next/link"
 type FilterProfile = {
     category: "desktop" | "laptop" | "mini_pc" | "workstation" | null,
     osPreference: "windows" | "macos" | "linux" | null,
@@ -17,14 +17,6 @@ type CpuOption = {
     id: number,
     passmarkScore: number,
     name: string
-}
-
-type SystemRow = {
-    name: string,
-    price: number,
-    cpuName: string,
-    gpuName: string,
-    ramGb: number,
 }
 
 type OsType = "windows" | "macos" | "linux" 
@@ -160,7 +152,7 @@ function FilterStep() {
         setFilterProfile(previousProfile => ({ ...previousProfile, eccRequired: eccValue}))
     }
     
-    const [results, setResults] = useState<System[] | null>(null)
+    const [results, setResults] = useState<System[]>([])
     const [resultsLoading, setResultsLoading] = useState<boolean>(true)
     const [resultsError, setResultsError] = useState<boolean>(false)
     useEffect(() => {
@@ -179,7 +171,7 @@ function FilterStep() {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch results: ${response.status}`)
                 }
-                const data: System = await response.json()
+                const data: System[] = await response.json()
                 setResults(data)
                 setResultsLoading(false)
             } catch (err) {
@@ -195,71 +187,110 @@ function FilterStep() {
             controller.abort()
         })
     }, [filterProfile])
+    let statusText = ""
+    
+    if (resultsError === true) {
+        statusText = "An error occurred. Adjust your specs and try again."
+    } else if (resultsLoading === true) {
+        statusText = "Loading results..."
+    }  else if (results.length === 0) {
+        statusText = "No results found. Adjust your specs and try again."
+    } else if (results.length === 1){
+        statusText = "1 result found."
+    } else {
+        statusText = `${results.length} results found.`
+    }
     return (
-        <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">Category</label>
-            <select id="categoryOption" value={filterProfile.category ?? ""} onChange={handleCategoryChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">
-                <option value="">Any</option>
-                {CATEGORY_OPTIONS.map((option) => (
-                <option
-                    key={option}
-                    value={option}
-                >
-                    {getWrittenCategoryOption(option)}
-                </option>
-            ))}</select>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="flex flex-col gap-6 bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">Category</label>
+                <select id="categoryOption" value={filterProfile.category ?? ""} onChange={handleCategoryChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">
+                    <option value="">Any</option>
+                    {CATEGORY_OPTIONS.map((option) => (
+                    <option
+                        key={option}
+                        value={option}
+                    >
+                        {getWrittenCategoryOption(option)}
+                    </option>
+                ))}</select>
+                </div>
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">CPU Performance</label>
+                    <p className="font-body text-xs text-text-muted">What CPU should the system's CPU have equivalent performance to?</p>
+                <select id="cpuOption" value={selectedCpuId ?? ""} onChange={handleCpuChange} disabled={cpuLoading} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal disabled:opacity-40 disabled:pointer-events-none px-3 py-2">
+                    <option value="">{cpuLoading ? "Loading CPUs..." : "Any"}</option>
+                    {cpuOptions.map((option) => (
+                    <option
+                        key={option.id}
+                        value={option.id}
+                    >
+                        {option.name}
+                    </option>
+                ))}</select>
+                {cpuLoadError && <p className="font-body text-text-muted">Failed to load CPU list</p>}
+                </div>
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">VRAM (GB)</label>
+                <input type="number" min={0} id="vramOption" value={filterProfile.minVramGb ?? ""} placeholder="Any" onChange={handleVramChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
+                </div>
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">RAM (GB)</label>
+                <input type="number" min={0} id="ramOption" value={filterProfile.minRamGb ?? ""} placeholder="Any" onChange={handleRamChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
+                </div>
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">Storage (GB)</label>
+                <input type="number" min={0} id="storageOption" value={filterProfile.minStorageGb ?? ""} placeholder="Any" onChange={handleStorageChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
+                </div>
+                <div className="flex flex-col gap-1">
+                <label className="font-body text-text-muted">OS</label>
+                <select id="osOption" value={filterProfile.osPreference ?? ""} onChange={handleOsChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">
+                    <option value="">Any</option>
+                    {OS_OPTIONS.map((option) => (
+                    <option
+                        key={option}
+                        value={option}
+                    >
+                        {getWrittenOsOption(option)}
+                    </option>
+                ))}</select>
+                </div>
+                <div className="flex flex-col gap-1 min-w-0">
+                <label className="font-body text-text-muted">Max Price (USD)</label>
+                <input type="number" min={0} id="maxPriceOption" value={filterProfile.maxPriceUsd ?? ""} placeholder="Any" onChange={handleMaxPriceChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
+                </div>
+                <div className="flex items-center gap-2">
+                <label className="font-body text-text-muted">ECC</label>
+                <input type="checkbox" id="eccOption" checked={filterProfile.eccRequired} onChange={handleEccChange} className="px-3 py-2 accent-accent-copper" />
+                </div>
+                {
+                    //<pre>{JSON.stringify(filterProfile, null, 2)}</pre>
+                    //<pre>Results Error: {String(resultsError)}</pre>
+                    //<pre>Results Loading: {String(resultsLoading)}</pre>
+                }
             </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">CPU Options</label>
-            <select id="cpuOption" value={selectedCpuId ?? ""} onChange={handleCpuChange} disabled={cpuLoading} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal disabled:opacity-40 disabled:pointer-events-none px-3 py-2">
-                <option value="">{cpuLoading ? "Loading CPUs..." : "Any"}</option>
-                {cpuOptions.map((option) => (
-                <option
-                    key={option.id}
-                    value={option.id}
-                >
-                    {option.name}
-                </option>
-            ))}</select>
-            {cpuLoadError && <p className="font-body text-text-muted">Failed to load CPU list</p>}
+            <div className="bg-panel border border-hairline rounded-md p-6 h-[calc(100vh-6rem)] overflow-y-auto min-w-0 w-full">
+                <h2 className="font-heading text-text-primary">Results</h2>
+               <p className="font-body text-text-muted text-sm mb-4">{statusText}</p>
+                <div className="divide-y divide-hairline">
+                {results.map((result) => (
+                    <Link key={result.id} href={"/systems/" + result.id} className="flex items-center gap-4 py-4">
+                        <div className="flex flex-col flex-1 gap-1 min-w-0">
+                            <div className="flex justify-between items-baseline gap-2">
+                                <h3 className="font-heading text-text-primary">{result.name}</h3>
+                                <span className="font-mono text-accent-copper">${result.priceUsd.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                            </div>
+                            <div className="flex">
+                                <p className="font-mono text-text-muted text-sm">
+                                    {result.systemCpus[0]?.cpu.name} · {result.systemGpus[0]?.gpu.name} · {result.systemRam[0]?.ramConfig.capacityGb}GB {result.systemRam[0]?.ramConfig.type}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
             </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">VRAM (GB)</label>
-            <input type="number" min={0} id="vramOption" value={filterProfile.minVramGb ?? ""} placeholder="Any" onChange={handleVramChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
             </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">RAM (GB)</label>
-            <input type="number" min={0} id="ramOption" value={filterProfile.minRamGb ?? ""} placeholder="Any" onChange={handleRamChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
-            </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">Storage (GB)</label>
-            <input type="number" min={0} id="storageOption" value={filterProfile.minStorageGb ?? ""} placeholder="Any" onChange={handleStorageChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
-            </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">OS</label>
-            <select id="osOption" value={filterProfile.osPreference ?? ""} onChange={handleOsChange} className="bg-panel border border-hairline font-body text-text-primary focus:border-accent-teal px-3 py-2">
-                <option value="">Any</option>
-                {OS_OPTIONS.map((option) => (
-                <option
-                    key={option}
-                    value={option}
-                >
-                    {getWrittenOsOption(option)}
-                </option>
-            ))}</select>
-            </div>
-            <div className="flex flex-col gap-1">
-            <label className="font-body text-text-muted">Max Price (USD)</label>
-            <input type="number" min={0} id="maxPriceOption" value={filterProfile.maxPriceUsd ?? ""} placeholder="Any" onChange={handleMaxPriceChange} className="bg-panel border border-hairline font-body text-text-primary px-3 py-2 focus:border-accent-teal" />
-            </div>
-            <div className="flex items-center gap-2">
-            <label className="font-body text-text-muted">ECC</label>
-            <input type="checkbox" id="eccOption" checked={filterProfile.eccRequired} onChange={handleEccChange} className="px-3 py-2 accent-accent-copper" />
-            </div>
-            <pre>{JSON.stringify(filterProfile, null, 2)}</pre>
-            <pre>Results Error: {String(resultsError)}</pre>
-            <pre>Results Loading: {String(resultsLoading)}</pre>
         </div>
     )
 }

@@ -67,7 +67,7 @@ export default function QuestionnairePage() {
     }
 
     return (
-        <div className={`mx-auto px-6 py-8 ${familiarity === "low" ? "max-w-7xl" : "max-w-2xl"}`}>
+        <div className={`mx-auto px-6 py-8 ${familiarity === "low" || familiarity === "high" ? "max-w-7xl" : "max-w-2xl"}`}>
             {!introDismissed ? (
                 <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6 px-6 py-6">
                     <h1 className="font-heading text-text-primary text-4xl">Computer Recommendation Questionnaire</h1>
