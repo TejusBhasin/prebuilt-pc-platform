@@ -3,8 +3,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { System } from "@/lib/types"
 import Link from "next/link"
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
+import { apiUrl } from "@/lib/api"
 
 export default function ResultsPage() {
     const router = useRouter()
@@ -27,7 +26,10 @@ export default function ResultsPage() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(requirementsProfile)
                 }
-                const recommend = await fetch(API_BASE_URL + "/systems/recommend", options)
+                const recommend = await fetch(apiUrl("/systems/recommend"), options)
+                if (!recommend.ok) {
+                    throw new Error(`Failed to fetch recommendations: ${recommend.status}`)
+                }
                 const parsedRecommend = await recommend.json()
                 setResults(parsedRecommend)
             } catch (err) {

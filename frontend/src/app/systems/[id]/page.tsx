@@ -2,10 +2,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link"
 import { System } from "@/lib/types";
 import ImageCarousel from "../ImageCarousel";
+import { apiUrl } from "@/lib/api"
 
 async function SystemDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/systems/${id}`, { cache: 'no-store' })
+    const response = await fetch(apiUrl(`/systems/${id}`), { cache: 'no-store' })
     if (!response.ok) {
         throw new Error(`Failed to fetch systems: ${response.status}`)
     }

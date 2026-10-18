@@ -1,4 +1,5 @@
 "use client"
+import { apiUrl } from "@/lib/api"
 import { useState, useEffect, ChangeEvent } from "react";
 import { SystemCategory, System, FilterProfile, OsType } from "@/lib/types";
 import Link from "next/link"
@@ -62,7 +63,7 @@ function FilterStep() {
     useEffect(() => {
         async function getCpuOptions() {
             try {
-                const response = await fetch("http://localhost:3001/cpus/options")
+                const response = await fetch(apiUrl("/cpus/options"))
                 if (!response.ok) {
                     throw new Error(`Failed to fetch CPU options: ${response.status}`)
                 }
@@ -166,7 +167,7 @@ function FilterStep() {
                     body: JSON.stringify(filterProfile),
                     signal: controller.signal
                 }
-                const response = await fetch("http://localhost:3001/systems/filter", options)
+                const response = await fetch(apiUrl("/systems/filter"), options)
                 if (!response.ok) {
                     throw new Error(`Failed to fetch results: ${response.status}`)
                 }
