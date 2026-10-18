@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import prisma from "../database.js"
 import { hardFilter, rankSystems } from "../engine.js"
 import { CategoryAverages } from "../engine.js"
+import { Prisma } from "../generated/prisma/client.js";
 
 const router = new Hono()
 
@@ -25,8 +26,11 @@ const systemIncludes = {
         include: {
             storageConfig: true
         }
+    },
+    systemImages: {
+        orderBy: { displayOrder: "asc" }
     }
-}
+} satisfies Prisma.SystemInclude
 
 router.get("/", async (c) => {
     const where: any = {}
@@ -107,7 +111,7 @@ router.get("/:id", async (c) => {
 
 router.post("/", async (c) => {
     const body = await c.req.json()
-    const { manufacturerId, cpuId, gpuId, ramConfigId, storageConfigId, ...rest } = body
+    const { manufacturerId, cpuId, gpuId, ramConfigId, storageConfigId, images, ...rest } = body
     const system = await prisma.system.create({
         data: {
             manufacturer: { connect: { id: manufacturerId } },
@@ -123,7 +127,9 @@ router.post("/", async (c) => {
             systemStorage: {
                 create: [{ storageConfig: { connect: { id: storageConfigId } } }]
             },
-
+            systemImages: {
+                create: images ?? []
+            },
             ...rest
         }
     }
