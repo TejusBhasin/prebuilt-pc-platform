@@ -37,13 +37,13 @@ export function buildRequirementsProfile(answers: QuestionnaireAnswers): Require
     const ramScore = ramList[0] * 1 + (ramList[1] ?? 0) * 0.5
     if(ramScore === 0){
         minRamGb = 4
-    } else if (ramScore <= 2.5){
+    } else if (ramScore <= 3){
         minRamGb = 8
-    } else if (ramScore <= 4){
+    } else if (ramScore <= 5){
         minRamGb = 16
     } else if (ramScore <= 6){
         minRamGb = 32
-    } else if (ramScore > 6){
+    } else if (ramScore > 8){
         minRamGb = 64
     }
 
@@ -51,9 +51,9 @@ export function buildRequirementsProfile(answers: QuestionnaireAnswers): Require
     let baseCpuScore = 0
     const highestCpuWeight = Math.max(...selectedTiles.map(tile => tile.cpuWeight))
     if(highestCpuWeight === 5){
-        baseCpuScore = 20000
+        baseCpuScore = 1600
     } else if (highestCpuWeight === 4){
-        baseCpuScore = 14000
+        baseCpuScore = 12000
     } else if (highestCpuWeight === 3){
         baseCpuScore = 8000
     } else if (highestCpuWeight === 2){
