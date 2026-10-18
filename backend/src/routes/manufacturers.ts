@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import prisma from "../database.js"
 import { AnyNull } from "@prisma/client/runtime/client";
+import { parseId } from "../params.js"
 
 const router = new Hono()
 
@@ -10,7 +11,10 @@ router.get("/", async (c) => {
 })
 
 router.get("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const manufacturer = await prisma.manufacturer.findUnique({
         where: { id }
     })
@@ -27,14 +31,20 @@ router.post("/", async (c) => {
 })
 
 router.put("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const body = await c.req.json()
     const manufacturer = await prisma.manufacturer.update({ where: { id }, data: body })
     return c.json(manufacturer)
 })
 
 router.delete("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const deleted = await prisma.manufacturer.delete({ where: { id } })
     return c.json(deleted)
 })

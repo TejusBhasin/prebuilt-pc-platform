@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import prisma from "../database.js"
+import { parseId } from "../params.js"
 import { hardFilter, rankSystems } from "../engine.js"
 import { CategoryAverages } from "../engine.js"
 import { Prisma, Category, OsType } from "../generated/prisma/client.js";
@@ -111,7 +112,10 @@ router.post("/filter", async (c) => {
 })
 
 router.get("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const system = await prisma.system.findUnique({
         where: { id },
         include: systemIncludes
@@ -151,7 +155,10 @@ router.post("/", async (c) => {
 })
 
 router.put("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const body = await c.req.json()
     const { manufacturerId, ...rest } = body
     const system = await prisma.system.update({
@@ -166,7 +173,10 @@ router.put("/:id", async (c) => {
 })
 
 router.delete("/:id", async (c) => {
-    const id = parseInt(c.req.param("id"))
+    const id = parseId(c.req.param("id"))
+    if (id === null) {
+        return c.json({ error: "id must be a positive integer" }, 400)
+    }
     const deleted = await prisma.system.delete({ where: { id } })
     return c.json(deleted)
 })
