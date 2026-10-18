@@ -29,9 +29,9 @@ async function main() {
         create: { name: "Apple", website: "https://www.apple.com" }
     })
     const nvidia = await prisma.manufacturer.upsert({
-        where: { name: "Nvidia" },
+        where: { name: "NVIDIA" },
         update: {},
-        create: { name: "Nvidia", website: 'https://www.nvidia.com' }
+        create: { name: "NVIDIA", website: 'https://www.nvidia.com' }
     })
     const lenovo = await prisma.manufacturer.upsert({
         where: { name: "Lenovo" },
@@ -92,7 +92,7 @@ async function main() {
         data: { manufacturerId: apple.id, name: "Apple M2 Ultra 24-Core", baseClockGhz: 3.5, boostClockGhz: 4.0, passmarkScore: 38000, eccSupport: false, integratedGraphics: true, tdpWatts: 120 }
     })
     const nvidia_GB10_Grace_20_Core = await prisma.cpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia GB10 Grace (20-Core ARM)", baseClockGhz: 2.6, boostClockGhz: 3.3, passmarkScore: null, eccSupport: false, integratedGraphics: false, tdpWatts: 60 }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA GB10 Grace (20-Core ARM)", baseClockGhz: 2.6, boostClockGhz: 3.3, passmarkScore: null, eccSupport: false, integratedGraphics: false, tdpWatts: 60 }
     })
     const intel_i7_14700F = await prisma.cpu.create({
         data: { manufacturerId: intel.id, name: "Intel Core i7-14700F", baseClockGhz: 2.1, boostClockGhz: 5.4, passmarkScore: 36900, eccSupport: false, integratedGraphics: false, tdpWatts: 65 }
@@ -145,19 +145,19 @@ async function main() {
         data: { manufacturerId: apple.id, name: "Apple M2 Ultra 60-Core GPU", vramGb: 64, passmarkScore: null, tdpWatts: null, isIntegrated: true }
     })
     const nvidia_Blackwell_GB10_gpu = await prisma.gpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia Blackwell GB10 GPU", vramGb: 128, passmarkScore: null, tdpWatts: 60, isIntegrated: false }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA Blackwell GB10 GPU", vramGb: 128, passmarkScore: null, tdpWatts: 60, isIntegrated: false }
     })
     const nvidia_GeForce_RTX_4070_Super = await prisma.gpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia GeForce RTX 4070 Super", vramGb: 12, passmarkScore: 22600, tdpWatts: 220, isIntegrated: false }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA GeForce RTX 4070 Super", vramGb: 12, passmarkScore: 22600, tdpWatts: 220, isIntegrated: false }
     })
     const nvidia_GeForce_RTX_3050 = await prisma.gpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia GeForce RTX 3050", vramGb: 8, passmarkScore: 9900, tdpWatts: 130, isIntegrated: false }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA GeForce RTX 3050", vramGb: 8, passmarkScore: 9900, tdpWatts: 130, isIntegrated: false }
     })
     const nvidia_GeForce_RTX_4000_sff_Ada = await prisma.gpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia RTX 4000 SFF Ada", vramGb: 20, passmarkScore: 15200, tdpWatts: 70, isIntegrated: false }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA RTX 4000 SFF Ada", vramGb: 20, passmarkScore: 15200, tdpWatts: 70, isIntegrated: false }
     })
     const nvidia_T1000 = await prisma.gpu.create({
-        data: { manufacturerId: nvidia.id, name: "Nvidia T1000", vramGb: 8, passmarkScore: 4400, tdpWatts: 50, isIntegrated: false }
+        data: { manufacturerId: nvidia.id, name: "NVIDIA T1000", vramGb: 8, passmarkScore: 4400, tdpWatts: 50, isIntegrated: false }
     })
     const intel_Iris_Xe_i7_1365U = await prisma.gpu.create({
         data: { manufacturerId: intel.id, name: "Intel Iris Xe Graphics (i7-1365U)", vramGb: 2, passmarkScore: null, tdpWatts: 15, isIntegrated: true }
