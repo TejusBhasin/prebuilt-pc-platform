@@ -1,6 +1,6 @@
 type RequirementsProfile = {
-  category: "desktop" | "laptop" | "mini_pc" | "workstation" | null,
-  osPreference: "windows" | "macos" | "linux" | null,
+  category: Category | null,
+  osPreference: OsType | null,
   minRamGb: number | null,
   minVramGb: number | null,
   minCpuScore: number | null,
@@ -22,8 +22,8 @@ type CategoryAverages = {
 }
 
 type FilterProfile = {
-  category: "desktop" | "laptop" | "mini_pc" | "workstation" | null,
-  osPreference: "windows" | "macos" | "linux" | null,
+  category: Category | null,
+  osPreference: OsType | null,
   minRamGb: number | null,
   minVramGb: number | null,
   minCpuScore: number | null,
@@ -31,6 +31,13 @@ type FilterProfile = {
   eccRequired: boolean,
   maxPriceUsd: number | null,
 }
+
+type OsType = "windows" | "macos" | "linux"
+
+type Category = "desktop" | "laptop" | "workstation" | "mini_pc"
+
+export type { Category }
+export type { OsType }
 export type { FilterProfile }
 export type { RequirementsProfile }
 export type { CategoryAverages }
