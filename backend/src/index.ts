@@ -24,9 +24,16 @@ for (const path of ["/systems", "/manufacturers", "/cpus", "/gpus"]) {
     app.on("POST", path, requireToken)
 }
 
+app.get("/health", (c) => c.json({ status: "ok" }))
+
 app.route("/systems", systemsRouter)
 app.route("/manufacturers", manufacturerRouter)
 app.route("/cpus", cpuRouter)
 app.route("/gpus", gpuRouter)
 
-serve({ fetch: app.fetch, port: 3001 })
+const port = Number(process.env.PORT ?? 3001)
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    throw new Error("PORT is not a valid port number")
+}
+
+serve({ fetch: app.fetch, port })
