@@ -2,7 +2,14 @@ import { Hono } from "hono";
 import prisma from "../database.js"
 import { hardFilter, rankSystems } from "../engine.js"
 import { CategoryAverages } from "../engine.js"
-import { Prisma } from "../generated/prisma/client.js";
+import { Prisma, Category, OsType } from "../generated/prisma/client.js";
+
+function isCategory(value: string): value is Category {
+    return Object.values(Category).includes(value as Category)
+}
+function isOs(value: string): value is OsType {
+    return Object.values(OsType).includes(value as OsType)
+}
 
 const router = new Hono()
 
@@ -33,14 +40,17 @@ const systemIncludes = {
 } satisfies Prisma.SystemInclude
 
 router.get("/", async (c) => {
-    const where: any = {}
+    const where: Prisma.SystemWhereInput= {}
     const category = c.req.query("category")
     const maxPriceUsd = c.req.query("maxPriceUsd")
     const maxWeightKg = c.req.query("maxWeightKg")
     const os = c.req.query("os")
     const active = c.req.query("active")
     if (category) {
-        where.category = category
+       if(!isCategory(category)) {
+        return c.json({ error: "Invalid category" }, 400)
+       }
+       where.category = category
     }
     if (maxPriceUsd) {
         where.priceUsd = { lte: parseFloat(maxPriceUsd) }
@@ -49,6 +59,9 @@ router.get("/", async (c) => {
         where.weightKg = { lte: parseFloat(maxWeightKg) }
     }
     if (os) {
+        if(!isOs(os)) {
+            return c.json({ error: "Invalid OS" }, 400)
+        }
         where.os = os
     }
     if (active !== undefined) {
