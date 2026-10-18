@@ -18,7 +18,7 @@ async function SystemDetailPage({ params }: { params: Promise<{ id: string }> })
         <div className="max-w-5xl mx-auto px-6 py-10">
             <h1 className="font-heading text-3xl text-text-primary mb-8">{system.name}</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <ImageCarousel images={[]} systemName={system.name} />
+                <ImageCarousel images={system.systemImages} systemName={system.name} />
                 <div className="flex flex-col gap-6">
                     <div>
                         <p>${system.priceUsd.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
