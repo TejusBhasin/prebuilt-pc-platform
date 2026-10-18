@@ -6,6 +6,10 @@
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
+
+  // Node ESM needs explicit extensions at runtime; without this the generated
+  // client emits "./enums" and the compiled output fails with ERR_MODULE_NOT_FOUND.
+  importFileExtension = "js"
 }
 
 datasource db {
