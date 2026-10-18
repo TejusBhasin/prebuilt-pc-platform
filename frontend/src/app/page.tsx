@@ -1,7 +1,5 @@
-import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div><script>{window.location.href="/questionnaire"}</script></div>
-  );
+  redirect("/questionnaire");
 }
