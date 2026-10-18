@@ -95,7 +95,7 @@ enum Category {
 model SystemImage {
   id           Int      @id @default(autoincrement())
   systemId     Int
-  system       System   @relation(fields: [systemId], references: [id])
+  system       System   @relation(fields: [systemId], references: [id], onDelete: Cascade)
   url          String
   altText      String
   sourceUrl    String
@@ -112,7 +112,7 @@ model System {
   manufacturer   Manufacturer @relation(fields: [manufacturerId], references: [id])
 
   name              String
-  category          String
+  category          Category
   lengthMm          Int?
   widthMm           Int?
   depthMm           Int?
@@ -139,32 +139,32 @@ model SystemCpu {
   id       Int    @id @default(autoincrement())
   systemId Int
   cpuId    Int
-  system   System @relation(fields: [systemId], references: [id])
-  cpu      Cpu    @relation(fields: [cpuId], references: [id])
+  system   System @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  cpu      Cpu    @relation(fields: [cpuId], references: [id], onDelete: Cascade)
 }
 
 model SystemGpu {
   id       Int    @id @default(autoincrement())
   systemId Int
   gpuId    Int
-  system   System @relation(fields: [systemId], references: [id])
-  gpu      Gpu    @relation(fields: [gpuId], references: [id])
+  system   System @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  gpu      Gpu    @relation(fields: [gpuId], references: [id], onDelete: Cascade)
 }
 
 model SystemRam {
   id          Int       @id @default(autoincrement())
   systemId    Int
   ramConfigId Int
-  system      System    @relation(fields: [systemId], references: [id])
-  ramConfig   RamConfig @relation(fields: [ramConfigId], references: [id])
+  system      System    @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  ramConfig   RamConfig @relation(fields: [ramConfigId], references: [id], onDelete: Cascade)
 }
 
 model SystemStorage {
   id              Int           @id @default(autoincrement())
   systemId        Int
   storageConfigId Int
-  system          System        @relation(fields: [systemId], references: [id])
-  storageConfig   StorageConfig @relation(fields: [storageConfigId], references: [id])
+  system          System        @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  storageConfig   StorageConfig @relation(fields: [storageConfigId], references: [id], onDelete: Cascade)
 }
 
 model CpuScore {
