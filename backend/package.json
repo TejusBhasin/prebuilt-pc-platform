@@ -9,7 +9,10 @@
     "start": "node dist/src/index.js",
     "test": "vitest run",
     "migrate:deploy": "prisma migrate deploy",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "db:xlsx": "tsx prisma/xlsx-to-csv.ts",
+    "db:import": "tsx --env-file=.env prisma/import.ts",
+    "db:import:dry": "tsx --env-file=.env prisma/import.ts --dry-run"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^26.6.5",
     "dotenv": "^18.0.8",
+    "exceljs": "^4.4.0",
     "prisma": "^7.8.0",
     "tsx": "^4.23.0",
     "typescript": "^6.0.3",
