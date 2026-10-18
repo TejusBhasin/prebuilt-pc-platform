@@ -60,15 +60,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: 'laptop',
             maxPriceUsd: 1600,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -94,15 +95,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: 'desktop',
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -128,15 +130,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: 1000,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -177,14 +180,15 @@ describe('hardFilter', () => {
             lengthMm: null,
             widthMm: null,
             systemCpus: [fakeSystemCpu],
-            systemGpus: null,
+            systemGpus: [],
             systemRam: [fakeSystemRamConfig],
-            systemStorage: null
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -216,15 +220,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
+            systemCpus: [],
             systemGpus: [fakeSystemGpu],
-            systemRam: null,
-            systemStorage: null
+            systemRam: [],
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: 24,
@@ -255,17 +260,19 @@ describe('hardFilter', () => {
             priceUsd: null,
             weightKg: null,
 
+            
             lengthMm: null,
             widthMm: null,
             systemCpus: [fakeSystemCpu],
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: 24400,
             minRamGb: null,
             minVramGb: null,
@@ -298,15 +305,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
+            systemCpus: [],
+            systemGpus: [],
             systemRam: [fakeSystemRamConfig],
-            systemStorage: null
+            systemStorage: []
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: 16,
             minVramGb: null,
@@ -338,15 +346,16 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
             systemStorage: [fakeSystemStorageConfig]
         }
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -385,8 +394,8 @@ describe('hardFilter', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
-            systemGpus: null,
+            systemCpus: [],
+            systemGpus: [],
             systemRam: [fakeSystemRamConfig],
             systemStorage: [fakeSystemStorageConfig]
         }
@@ -394,6 +403,7 @@ describe('hardFilter', () => {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -416,6 +426,7 @@ describe('hardFilter', () => {
             category: 'laptop',
             maxPriceUsd: 1600,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -478,6 +489,7 @@ describe('scoreSystem', () => {
             category: 'laptop',
             maxPriceUsd: 2000,
 
+            osPreference: null,
             minCpuScore: 10000,
             minRamGb: 8,
             minVramGb: 16,
@@ -581,6 +593,7 @@ describe('scoreSystem', () => {
             category: 'laptop',
             maxPriceUsd: 1500,
 
+            osPreference: null,
             minCpuScore: 10000,
             minRamGb: 16,
             minVramGb: 8,
@@ -610,6 +623,7 @@ describe('scoreSystem', () => {
             category: null,
             maxPriceUsd: 1600,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,
@@ -641,10 +655,10 @@ describe('scoreSystem', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
+            systemCpus: [],
             systemGpus: [fakeSystemGpuLow],
-            systemRam: null,
-            systemStorage: null
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeGpuHigh: TestGpu = {
@@ -660,16 +674,17 @@ describe('scoreSystem', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
+            systemCpus: [],
             systemGpus: [fakeSystemGpuHigh],
-            systemRam: null,
-            systemStorage: null
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: 20,
@@ -701,10 +716,10 @@ describe('scoreSystem', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
+            systemCpus: [],
             systemGpus: [fakeSystemGpuLow],
-            systemRam: null,
-            systemStorage: null
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeGpuHigh: TestGpu = {
@@ -720,16 +735,17 @@ describe('scoreSystem', () => {
 
             lengthMm: null,
             widthMm: null,
-            systemCpus: null,
+            systemCpus: [],
             systemGpus: [fakeSystemGpuHigh],
-            systemRam: null,
-            systemStorage: null
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeRequirementsProfile: RequirementsProfile = {
             category: null,
             maxPriceUsd: null,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: 8,
@@ -832,6 +848,7 @@ describe('rankSystem', () => {
             category: 'laptop',
             maxPriceUsd: 1500,
 
+            osPreference: null,
             minCpuScore: 5000,
             minRamGb: 4,
             minVramGb: 8,
@@ -932,6 +949,7 @@ describe('rankSystem', () => {
             category: 'laptop',
             maxPriceUsd: 1500,
 
+            osPreference: null,
             minCpuScore: 5000,
             minRamGb: 16,
             minVramGb: 24,
@@ -956,10 +974,10 @@ describe('rankSystem', () => {
 
             lengthMm: 312,
             widthMm: 216,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeSystemHigh: TestSystem = {
@@ -969,16 +987,17 @@ describe('rankSystem', () => {
 
             lengthMm: 300,
             widthMm: 200,
-            systemCpus: null,
-            systemGpus: null,
-            systemRam: null,
-            systemStorage: null
+            systemCpus: [],
+            systemGpus: [],
+            systemRam: [],
+            systemStorage: []
         }
 
         const fakeRequirementsProfile: RequirementsProfile = {
             category: 'laptop',
             maxPriceUsd: 1500,
 
+            osPreference: null,
             minCpuScore: null,
             minRamGb: null,
             minVramGb: null,

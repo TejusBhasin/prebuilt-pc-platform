@@ -34,7 +34,9 @@ type FilterProfile = {
 
 type OsType = "windows" | "macos" | "linux"
 
+
 type Category = "desktop" | "laptop" | "workstation" | "mini_pc"
+
 
 export type { Category }
 export type { OsType }
@@ -42,24 +44,37 @@ export type { FilterProfile }
 export type { RequirementsProfile }
 export type { CategoryAverages }
 
+const DEFAULT_AI_VRAM_GB = 8
+
 function hardFilter(systems: any[], profile: RequirementsProfile | FilterProfile): any[] {
+  const { minRamGb, minVramGb, minCpuScore, minStorageGb } = profile
   return systems.filter((system) => {
+    const cpuPassmarkScore = Math.max(0, ...system.systemCpus.map((entry: any) => entry.cpu.passmarkScore ?? 0))
+    const vramGb = Math.max(0, ...system.systemGpus.map((entry: any) => entry.gpu.vramGb ?? 0))
+    let ramGb = 0
+      for(const entry of system.systemRam) {
+        ramGb += entry.ramConfig.capacityGb ?? 0
+      }
+    let storageGb = 0
+      for(const entry of system.systemStorage) {
+        storageGb += entry.storageConfig.capacityGb ?? 0
+      }
     if (profile.category && system.category !== profile.category) {
       return false
     }
     if (profile.osPreference && system.os !== profile.osPreference) {
       return false
     }
-    if (profile.minRamGb && !system.systemRam.some((entry: any) => entry.ramConfig?.capacityGb >= profile.minRamGb)) {
+    if (minRamGb && minRamGb > ramGb) {
       return false
     }
-    if (profile.minVramGb && !system.systemGpus.some((entry: any) => entry.gpu?.vramGb >= profile.minVramGb)) {
+    if (minVramGb && minVramGb > vramGb) {
       return false
     }
-    if (profile.minCpuScore && !system.systemCpus.some((entry: any) => entry.cpu?.passmarkScore >= profile.minCpuScore)) {
+    if (minCpuScore && minCpuScore > cpuPassmarkScore) {
       return false
     }
-    if (profile.minStorageGb && !system.systemStorage.some((entry: any) => entry.storageConfig?.capacityGb >= profile.minStorageGb)) {
+    if (minStorageGb && minStorageGb > storageGb) {
       return false
     }
     if (profile.eccRequired &&
@@ -80,20 +95,25 @@ function scoreSystem(system: any, profile: RequirementsProfile, categoryAverages
   let maxScore = 0
   let score = 0
   const cpuWeight = 0.25
-  const vramWeight = 0.30
+  const vramWeight = 0.20
   const priceWeight = 0.20
-  const ramWeight = 0.10
-  const storageWeight = 0.05
-  const dimensionWeight = 0.10
+  const ramWeight = 0.20
+  const storageWeight = 0.10
+  const dimensionWeight = 0.05
 
   const averages = categoryAverages[system.category]
   if (profile.minCpuScore) {
     maxScore += cpuWeight
-    score += cpuWeight * Math.min((system.systemCpus[0]?.cpu?.passmarkScore / profile.minCpuScore), 1)
+    const passmarkScore = system.systemCpus[0]?.cpu?.passmarkScore ?? 0
+    score += cpuWeight * Math.min((passmarkScore / profile.minCpuScore), 1)
   }
   if (profile.localAiWorkloads) {
-    maxScore += vramWeight
-    score += Math.min((vramWeight * (system.systemGpus[0]?.gpu?.vramGb / profile.minVramGb)), vramWeight)
+    const targetVramGb = profile.minVramGb || DEFAULT_AI_VRAM_GB
+    if (targetVramGb !== 0 ){
+      maxScore += vramWeight
+      const systemVramGb = system.systemGpus[0]?.gpu?.vramGb ?? 0
+      score += Math.min((vramWeight * (systemVramGb / targetVramGb)), vramWeight)
+    } 
   }
   if (profile.maxPriceUsd) {
     maxScore += priceWeight
@@ -101,13 +121,15 @@ function scoreSystem(system: any, profile: RequirementsProfile, categoryAverages
   }
   if (profile.minRamGb) {
     maxScore += ramWeight
-    score += ramWeight * Math.min((system.systemRam[0]?.ramConfig?.capacityGb / profile.minRamGb), 1)
+    const ramGb = system.systemRam[0]?.ramConfig?.capacityGb ?? 0
+    score += ramWeight * Math.min((ramGb / profile.minRamGb), 1)
   }
   if (profile.minStorageGb) {
     maxScore += storageWeight
-    score += storageWeight * Math.min((system.systemStorage[0]?.storageConfig?.capacityGb / profile.minStorageGb), 1)
+    const storageGb = system.systemStorage[0]?.storageConfig?.capacityGb ?? 0
+    score += storageWeight * Math.min((storageGb / profile.minStorageGb), 1)
   }
-  if (profile.portabilityImportant) {
+  if (profile.portabilityImportant && averages && system.weightKg && system.lengthMm && system.widthMm) {
     maxScore += dimensionWeight
     const weightRatio = (averages.avgWeightKg / system.weightKg)
     const dimensionRatio = (averages.avgLengthMm * averages.avgWidthMm) / (system.lengthMm * system.widthMm)
