@@ -85,6 +85,27 @@ enum OsType {
   linux
 }
 
+enum Category {
+  laptop
+  desktop
+  workstation
+  mini_pc
+}
+
+model SystemImage {
+  id           Int      @id @default(autoincrement())
+  systemId     Int
+  system       System   @relation(fields: [systemId], references: [id])
+  url          String
+  altText      String
+  sourceUrl    String
+  sourceName   String
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([systemId])
+}
+
 model System {
   id             Int          @id @default(autoincrement())
   manufacturerId Int
@@ -111,6 +132,7 @@ model System {
   systemGpus    SystemGpu[]
   systemRam     SystemRam[]
   systemStorage SystemStorage[]
+  systemImages  SystemImage[]
 }
 
 model SystemCpu {
