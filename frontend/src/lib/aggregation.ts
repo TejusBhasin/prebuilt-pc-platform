@@ -1,7 +1,5 @@
-import { minifySync } from "next/dist/build/swc/generated-native"
 import { Tiles } from "./tiles"
 import type { QuestionnaireAnswers, RequirementsProfile } from "./types"
-import { workAsyncStorage } from "next/dist/server/app-render/work-async-storage.external"
 
 export function buildRequirementsProfile(answers: QuestionnaireAnswers): RequirementsProfile {
     const selectedTiles = Tiles.filter(tile => answers.selectedTileIds.includes(tile.id))
@@ -66,9 +64,9 @@ export function buildRequirementsProfile(answers: QuestionnaireAnswers): Require
 
     let longevityMultiplier = 1
     if(longevityYears !== null){
-        if(answers.longevityYears >= 7){
+        if(longevityYears >= 7){
             longevityMultiplier = 1.4
-        } else if (answers.longevityYears >= 5){
+        } else if (longevityYears >= 5){
             longevityMultiplier = 1.2
         } else {
             longevityMultiplier = 1

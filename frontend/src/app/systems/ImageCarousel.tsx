@@ -1,5 +1,4 @@
 "use client"
-import { NapiMiddleware } from 'next/dist/build/swc/generated-native'
 import { useState } from 'react'
 
 interface ImageCarouselProps {

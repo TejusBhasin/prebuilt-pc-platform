@@ -134,6 +134,8 @@ export default function getGuidance(step: QuestionnaireStep) {
                     <p className="font-body text-text-muted text-sm max-w-prose">For AI model size, it is helpful to do research on what model size you will need and what quantization you will be running it at, among other factors, before buying the hardware to run it.</p>
                 </div>
             )
+        case null:
+            return null
         default:
             const _exhaustiveCheck: never = step
             return null

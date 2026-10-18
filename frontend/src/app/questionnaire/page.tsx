@@ -60,6 +60,8 @@ export default function QuestionnairePage() {
                 return <TargetResolutionStep answers={answers} onAnswer={handleAnswer} />
             case "ai_model_size":
                 return <AiModelSizeStep answers={answers} onAnswer={handleAnswer} />
+            case null:
+                return null
             default:
                 const _exhaustiveCheck: never = step
                 return null

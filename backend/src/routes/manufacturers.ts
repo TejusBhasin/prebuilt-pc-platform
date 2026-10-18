@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import prisma from "../database.js"
-import { AnyNull } from "@prisma/client/runtime/client";
 import { parseId } from "../params.js"
 
 const router = new Hono()
