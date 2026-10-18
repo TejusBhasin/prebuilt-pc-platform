@@ -17,6 +17,7 @@ model Manufacturer {
   name      String   @unique
   website   String?
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   cpus    Cpu[]
   gpus    Gpu[]
@@ -37,8 +38,11 @@ model Cpu {
   tdpWatts           Int?
 
   createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
   systemCpus SystemCpu[]
   cpuScore   CpuScore?
+
+  @@index([manufacturerId])
 }
 
 model Gpu {
@@ -53,9 +57,12 @@ model Gpu {
   isIntegrated  Boolean @default(false)
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   scores     GpuScore?
   systemGpus SystemGpu[]
+
+  @@index([manufacturerId])
 }
 
 model RamConfig {
@@ -65,6 +72,7 @@ model RamConfig {
   eccSupport Boolean @default(false)
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   systemRam SystemRam[]
 }
@@ -75,6 +83,7 @@ model StorageConfig {
   type       String
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   systemStorage SystemStorage[]
 }
@@ -102,6 +111,7 @@ model SystemImage {
   sourceName   String
   displayOrder Int      @default(0)
   createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([systemId])
 }
@@ -127,12 +137,16 @@ model System {
   active            Boolean  @default(true)
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   systemCpus    SystemCpu[]
   systemGpus    SystemGpu[]
   systemRam     SystemRam[]
   systemStorage SystemStorage[]
   systemImages  SystemImage[]
+
+  @@index([manufacturerId])
+  @@index([category])
 }
 
 model SystemCpu {
@@ -141,6 +155,9 @@ model SystemCpu {
   cpuId    Int
   system   System @relation(fields: [systemId], references: [id], onDelete: Cascade)
   cpu      Cpu    @relation(fields: [cpuId], references: [id], onDelete: Cascade)
+
+  @@index([systemId])
+  @@index([cpuId])
 }
 
 model SystemGpu {
@@ -149,6 +166,9 @@ model SystemGpu {
   gpuId    Int
   system   System @relation(fields: [systemId], references: [id], onDelete: Cascade)
   gpu      Gpu    @relation(fields: [gpuId], references: [id], onDelete: Cascade)
+
+  @@index([systemId])
+  @@index([gpuId])
 }
 
 model SystemRam {
@@ -157,6 +177,9 @@ model SystemRam {
   ramConfigId Int
   system      System    @relation(fields: [systemId], references: [id], onDelete: Cascade)
   ramConfig   RamConfig @relation(fields: [ramConfigId], references: [id], onDelete: Cascade)
+
+  @@index([systemId])
+  @@index([ramConfigId])
 }
 
 model SystemStorage {
@@ -165,6 +188,9 @@ model SystemStorage {
   storageConfigId Int
   system          System        @relation(fields: [systemId], references: [id], onDelete: Cascade)
   storageConfig   StorageConfig @relation(fields: [storageConfigId], references: [id], onDelete: Cascade)
+
+  @@index([systemId])
+  @@index([storageConfigId])
 }
 
 model CpuScore {
@@ -203,4 +229,6 @@ model QuestionOption {
 
   displayText String
   value       String
+
+  @@index([questionId])
 }
