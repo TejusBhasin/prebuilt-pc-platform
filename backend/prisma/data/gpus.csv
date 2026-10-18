@@ -1,0 +1,29 @@
+key,manufacturer,name,vramGb,passmarkScore,tdpWatts,isIntegrated
+apple-m4-10-core-gpu-16gb,Apple,Apple M4 10-Core GPU,16,,,true
+apple-m4-pro-16-core-gpu-24gb,Apple,Apple M4 Pro 16-Core GPU,24,,,true
+apple-m4-pro-20-core-gpu-24gb,Apple,Apple M4 Pro 20-Core GPU,24,,,true
+apple-m4-max-32-core-gpu-36gb,Apple,Apple M4 Max 32-Core GPU,36,,,true
+apple-m4-max-40-core-gpu-36gb,Apple,Apple M4 Max 40-Core GPU,36,,,true
+apple-m2-ultra-60-core-gpu-64gb,Apple,Apple M2 Ultra 60-Core GPU,64,,,true
+nvidia-blackwell-gb10-gpu-128gb,NVIDIA,NVIDIA Blackwell GB10 GPU,128,,60,false
+nvidia-geforce-rtx-4070-super-12gb,NVIDIA,NVIDIA GeForce RTX 4070 Super,12,22600,220,false
+nvidia-geforce-rtx-3050-8gb,NVIDIA,NVIDIA GeForce RTX 3050,8,9900,130,false
+nvidia-rtx-4000-sff-ada-20gb,NVIDIA,NVIDIA RTX 4000 SFF Ada,20,15200,70,false
+nvidia-t1000-8gb,NVIDIA,NVIDIA T1000,8,4400,50,false
+intel-iris-xe-graphics-i7-1365u-2gb,Intel,Intel Iris Xe Graphics (i7-1365U),2,,15,true
+intel-uhd-graphics-770-2gb,Intel,Intel UHD Graphics 770,2,,65,true
+amd-radeon-860m-32gb,AMD,AMD Radeon 860M,32,4874,45,true
+amd-radeon-890m-64gb,AMD,AMD Radeon 890M,64,8059,28,true
+amd-radeon-680m-2gb,AMD,AMD Radeon 680M,2,3800,45,true
+amd-radeon-780m-2gb,AMD,AMD Radeon 780M,2,5100,45,true
+amd-radeon-860m-16gb,AMD,AMD Radeon 860M,16,4874,45,true
+amd-radeon-890m-32gb,AMD,AMD Radeon 890M,32,8059,28,true
+amd-radeon-8065s-192gb,AMD,AMD Radeon 8065S,192,,55,true
+amd-radeon-840m-16gb,AMD,AMD Radeon 840M,16,3656,28,true
+intel-arc-b390-32gb,Intel,Intel Arc B390,32,,25,true
+nvidia-geforce-rtx-5070-laptop-8gb-8gb,NVIDIA,NVIDIA GeForce RTX 5070 Laptop 8GB,8,19054,100,false
+nvidia-geforce-rtx-5070-laptop-12gb-12gb,NVIDIA,NVIDIA GeForce RTX 5070 Laptop 12GB,12,19054,100,false
+intel-graphics-core-ultra-5-325-16gb,Intel,Intel Graphics (Core Ultra 5 325),16,,25,true
+intel-graphics-core-3-304-8gb,Intel,Intel Graphics (Core 3 304),8,,,true
+intel-graphics-core-5-320-16gb,Intel,Intel Graphics (Core 5 320),16,,,true
+intel-graphics-core-7-350-32gb,Intel,Intel Graphics (Core 7 350),32,,,true

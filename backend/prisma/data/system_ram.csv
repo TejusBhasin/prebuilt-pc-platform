@@ -1,0 +1,42 @@
+system,system_key,capacityGb,type,eccSupport,ram_key
+Mac Mini M4,mac-mini-m4,16,LPDDR5,false,ram-16gb-lpddr5
+Mac Mini M4 Pro,mac-mini-m4-pro,24,LPDDR5,false,ram-24gb-lpddr5
+"MacBook Air M4 13""",macbook-air-m4-13,16,LPDDR5,false,ram-16gb-lpddr5
+"MacBook Air M4 15""",macbook-air-m4-15,16,LPDDR5,false,ram-16gb-lpddr5
+"MacBook Pro M4 Pro 14""",macbook-pro-m4-pro-14,24,LPDDR5,false,ram-24gb-lpddr5
+"MacBook Pro M4 Max 16""",macbook-pro-m4-max-16,36,LPDDR5,false,ram-36gb-lpddr5
+Mac Studio M4 Max,mac-studio-m4-max,36,LPDDR5,false,ram-36gb-lpddr5
+iMac M4,imac-m4,16,LPDDR5,false,ram-16gb-lpddr5
+Mac Pro M2 Ultra,mac-pro-m2-ultra,192,DDR5 ECC,true,ram-192gb-ddr5-ecc
+NVIDIA DGX Spark,nvidia-dgx-spark,128,LPDDR5X,false,ram-128gb-lpddr5x
+Lenovo Legion Tower 5i Gen 9,lenovo-legion-tower-5i-gen-9,32,DDR5,false,ram-32gb-ddr5
+Dell XPS Desktop,dell-xps-desktop,16,DDR5,false,ram-16gb-ddr5
+HP Z4 G5,hp-z4-g5,16,DDR5 ECC,true,ram-16gb-ddr5-ecc
+Lenovo ThinkStation P3 Ultra SFF Gen 2,lenovo-thinkstation-p3-ultra-sff-gen-2,32,DDR5,false,ram-32gb-ddr5
+Minisforum UM890 Pro,minisforum-um890-pro,32,DDR5,false,ram-32gb-ddr5
+Dell XPS 15,dell-xps-15,16,DDR5,false,ram-16gb-ddr5
+Lenovo ThinkPad X1 Carbon Gen 11,lenovo-thinkpad-x1-carbon-gen-11,16,LPDDR5,false,ram-16gb-lpddr5
+"Framework Desktop (Ryzen AI Max+ PRO 495, 192GB, 2TB)",framework-desktop-ryzen-ai-max-pro-495-192gb-2tb,192,LPDDR5X,false,ram-192gb-lpddr5x
+"Framework Laptop 13 (Ryzen AI 5 340, 16GB, 256GB)",framework-laptop-13-ryzen-ai-5-340-16gb-256gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 13 (Ryzen AI 7 350, 16GB, 512GB)",framework-laptop-13-ryzen-ai-7-350-16gb-512gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 13 (Ryzen AI 5 340, 16GB, 512GB)",framework-laptop-13-ryzen-ai-5-340-16gb-512gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 13 (Ryzen AI 9 HX 370, 32GB, 1TB)",framework-laptop-13-ryzen-ai-9-hx-370-32gb-1tb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb,64,DDR5,false,ram-64gb-ddr5
+"Framework Laptop 13 Pro (Core Ultra 5 325, 16GB, 512GB)",framework-laptop-13-pro-core-ultra-5-325-16gb-512gb,16,LPDDR5X,false,ram-16gb-lpddr5x
+"Framework Laptop 13 Pro (Core Ultra X7 358H, 32GB, 1TB)",framework-laptop-13-pro-core-ultra-x7-358h-32gb-1tb,32,LPDDR5X,false,ram-32gb-lpddr5x
+"Framework Laptop 12 (Core 3 304, 8GB, 512GB)",framework-laptop-12-core-3-304-8gb-512gb,8,DDR5,false,ram-8gb-ddr5
+"Framework Laptop 12 (Core 5 320, 16GB, 512GB)",framework-laptop-12-core-5-320-16gb-512gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 12 (Core 7 350, 32GB, 512GB)",framework-laptop-12-core-7-350-32gb-512gb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 13 Pro (Ryzen AI 7 350, 32GB, 1TB)",framework-laptop-13-pro-ryzen-ai-7-350-32gb-1tb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 13 Pro (Ryzen AI 9 HX 370, 64GB, 2TB)",framework-laptop-13-pro-ryzen-ai-9-hx-370-64gb-2tb,64,DDR5,false,ram-64gb-ddr5
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb-rtx-5070-8gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb-rtx-5070-12gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb-rtx-5070-8gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb-rtx-5070-12gb,16,DDR5,false,ram-16gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb-rtx-5070-8gb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb-rtx-5070-12gb,32,DDR5,false,ram-32gb-ddr5
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb-rtx-5070-8gb,64,DDR5,false,ram-64gb-ddr5
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb-rtx-5070-12gb,64,DDR5,false,ram-64gb-ddr5

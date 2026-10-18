@@ -1,0 +1,6 @@
+key,capacityGb,type
+storage-256gb-nvme-ssd,256,NVMe SSD
+storage-512gb-nvme-ssd,512,NVMe SSD
+storage-1000gb-nvme-ssd,1000,NVMe SSD
+storage-2000gb-nvme-ssd,2000,NVMe SSD
+storage-4000gb-nvme-ssd,4000,NVMe SSD

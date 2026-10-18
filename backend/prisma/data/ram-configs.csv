@@ -1,0 +1,17 @@
+key,capacityGb,type,eccSupport
+ram-16gb-lpddr5,16,LPDDR5,false
+ram-24gb-lpddr5,24,LPDDR5,false
+ram-32gb-ddr5,32,DDR5,false
+ram-36gb-lpddr5,36,LPDDR5,false
+ram-48gb-lpddr5,48,LPDDR5,false
+ram-192gb-ddr5-ecc,192,DDR5 ECC,true
+ram-64gb-ddr5-ecc,64,DDR5 ECC,true
+ram-128gb-lpddr5x,128,LPDDR5X,false
+ram-16gb-ddr5,16,DDR5,false
+ram-32gb-lpddr5,32,LPDDR5,false
+ram-24gb-ddr5-ecc,24,DDR5 ECC,true
+ram-16gb-ddr5-ecc,16,DDR5 ECC,true
+ram-16gb-lpddr5x,16,LPDDR5X,false
+ram-32gb-lpddr5x,32,LPDDR5X,false
+ram-192gb-lpddr5x,192,LPDDR5X,false
+ram-64gb-ddr5,64,DDR5,false

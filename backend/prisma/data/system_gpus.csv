@@ -1,0 +1,42 @@
+system,system_key,gpu,gpu_key,vramGb
+Mac Mini M4,mac-mini-m4,Apple M4 10-Core GPU,apple-m4-10-core-gpu-16gb,16
+Mac Mini M4 Pro,mac-mini-m4-pro,Apple M4 Pro 16-Core GPU,apple-m4-pro-16-core-gpu-24gb,24
+"MacBook Air M4 13""",macbook-air-m4-13,Apple M4 10-Core GPU,apple-m4-10-core-gpu-16gb,16
+"MacBook Air M4 15""",macbook-air-m4-15,Apple M4 10-Core GPU,apple-m4-10-core-gpu-16gb,16
+"MacBook Pro M4 Pro 14""",macbook-pro-m4-pro-14,Apple M4 Pro 20-Core GPU,apple-m4-pro-20-core-gpu-24gb,24
+"MacBook Pro M4 Max 16""",macbook-pro-m4-max-16,Apple M4 Max 40-Core GPU,apple-m4-max-40-core-gpu-36gb,36
+Mac Studio M4 Max,mac-studio-m4-max,Apple M4 Max 32-Core GPU,apple-m4-max-32-core-gpu-36gb,36
+iMac M4,imac-m4,Apple M4 10-Core GPU,apple-m4-10-core-gpu-16gb,16
+Mac Pro M2 Ultra,mac-pro-m2-ultra,Apple M2 Ultra 60-Core GPU,apple-m2-ultra-60-core-gpu-64gb,64
+NVIDIA DGX Spark,nvidia-dgx-spark,NVIDIA Blackwell GB10 GPU,nvidia-blackwell-gb10-gpu-128gb,128
+Lenovo Legion Tower 5i Gen 9,lenovo-legion-tower-5i-gen-9,NVIDIA GeForce RTX 4070 Super,nvidia-geforce-rtx-4070-super-12gb,12
+Dell XPS Desktop,dell-xps-desktop,NVIDIA GeForce RTX 3050,nvidia-geforce-rtx-3050-8gb,8
+HP Z4 G5,hp-z4-g5,NVIDIA RTX 4000 SFF Ada,nvidia-rtx-4000-sff-ada-20gb,20
+Lenovo ThinkStation P3 Ultra SFF Gen 2,lenovo-thinkstation-p3-ultra-sff-gen-2,NVIDIA RTX 4000 SFF Ada,nvidia-rtx-4000-sff-ada-20gb,20
+Minisforum UM890 Pro,minisforum-um890-pro,AMD Radeon 780M,amd-radeon-780m-2gb,2
+Dell XPS 15,dell-xps-15,NVIDIA GeForce RTX 3050,nvidia-geforce-rtx-3050-8gb,8
+Lenovo ThinkPad X1 Carbon Gen 11,lenovo-thinkpad-x1-carbon-gen-11,Intel Iris Xe Graphics (i7-1365U),intel-iris-xe-graphics-i7-1365u-2gb,2
+"Framework Desktop (Ryzen AI Max+ PRO 495, 192GB, 2TB)",framework-desktop-ryzen-ai-max-pro-495-192gb-2tb,AMD Radeon 8065S,amd-radeon-8065s-192gb,192
+"Framework Laptop 13 (Ryzen AI 7 350, 16GB, 512GB)",framework-laptop-13-ryzen-ai-7-350-16gb-512gb,AMD Radeon 860M,amd-radeon-860m-16gb,16
+"Framework Laptop 13 (Ryzen AI 9 HX 370, 32GB, 1TB)",framework-laptop-13-ryzen-ai-9-hx-370-32gb-1tb,AMD Radeon 890M,amd-radeon-890m-32gb,32
+"Framework Laptop 13 (Ryzen AI 5 340, 16GB, 256GB)",framework-laptop-13-ryzen-ai-5-340-16gb-256gb,AMD Radeon 840M,amd-radeon-840m-16gb,16
+"Framework Laptop 13 (Ryzen AI 5 340, 16GB, 512GB)",framework-laptop-13-ryzen-ai-5-340-16gb-512gb,AMD Radeon 840M,amd-radeon-840m-16gb,16
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb,AMD Radeon 840M,amd-radeon-840m-16gb,16
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb,AMD Radeon 860M,amd-radeon-860m-16gb,16
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb,AMD Radeon 860M,amd-radeon-860m-32gb,32
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb,AMD Radeon 890M,amd-radeon-890m-64gb,64
+"Framework Laptop 13 Pro (Core Ultra X7 358H, 32GB, 1TB)",framework-laptop-13-pro-core-ultra-x7-358h-32gb-1tb,Intel Arc B390,intel-arc-b390-32gb,32
+"Framework Laptop 13 Pro (Ryzen AI 7 350, 32GB, 1TB)",framework-laptop-13-pro-ryzen-ai-7-350-32gb-1tb,AMD Radeon 860M,amd-radeon-860m-32gb,32
+"Framework Laptop 13 Pro (Ryzen AI 9 HX 370, 64GB, 2TB)",framework-laptop-13-pro-ryzen-ai-9-hx-370-64gb-2tb,AMD Radeon 890M,amd-radeon-890m-64gb,64
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb-rtx-5070-8gb,NVIDIA GeForce RTX 5070 Laptop 8GB,nvidia-geforce-rtx-5070-laptop-8gb-8gb,8
+"Framework Laptop 16 (Ryzen AI 5 340, 16GB, 512GB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-5-340-16gb-512gb-rtx-5070-12gb,NVIDIA GeForce RTX 5070 Laptop 12GB,nvidia-geforce-rtx-5070-laptop-12gb-12gb,12
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb-rtx-5070-8gb,NVIDIA GeForce RTX 5070 Laptop 8GB,nvidia-geforce-rtx-5070-laptop-8gb-8gb,8
+"Framework Laptop 16 (Ryzen AI 7 350, 16GB, 512GB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-7-350-16gb-512gb-rtx-5070-12gb,NVIDIA GeForce RTX 5070 Laptop 12GB,nvidia-geforce-rtx-5070-laptop-12gb-12gb,12
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb-rtx-5070-8gb,NVIDIA GeForce RTX 5070 Laptop 8GB,nvidia-geforce-rtx-5070-laptop-8gb-8gb,8
+"Framework Laptop 16 (Ryzen AI 7 350, 32GB, 1TB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-7-350-32gb-1tb-rtx-5070-12gb,NVIDIA GeForce RTX 5070 Laptop 12GB,nvidia-geforce-rtx-5070-laptop-12gb-12gb,12
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB, RTX 5070 8GB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb-rtx-5070-8gb,NVIDIA GeForce RTX 5070 Laptop 8GB,nvidia-geforce-rtx-5070-laptop-8gb-8gb,8
+"Framework Laptop 16 (Ryzen AI 9 HX 370, 64GB, 2TB, RTX 5070 12GB)",framework-laptop-16-ryzen-ai-9-hx-370-64gb-2tb-rtx-5070-12gb,NVIDIA GeForce RTX 5070 Laptop 12GB,nvidia-geforce-rtx-5070-laptop-12gb-12gb,12
+"Framework Laptop 13 Pro (Core Ultra 5 325, 16GB, 512GB)",framework-laptop-13-pro-core-ultra-5-325-16gb-512gb,Intel Graphics (Core Ultra 5 325),intel-graphics-core-ultra-5-325-16gb,16
+"Framework Laptop 12 (Core 3 304, 8GB, 512GB)",framework-laptop-12-core-3-304-8gb-512gb,Intel Graphics (Core 3 304),intel-graphics-core-3-304-8gb,8
+"Framework Laptop 12 (Core 5 320, 16GB, 512GB)",framework-laptop-12-core-5-320-16gb-512gb,Intel Graphics (Core 5 320),intel-graphics-core-5-320-16gb,16
+"Framework Laptop 12 (Core 7 350, 32GB, 512GB)",framework-laptop-12-core-7-350-32gb-512gb,Intel Graphics (Core 7 350),intel-graphics-core-7-350-32gb,32

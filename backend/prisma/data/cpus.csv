@@ -1,0 +1,26 @@
+key,manufacturer,name,baseClockGhz,boostClockGhz,passmarkScore,eccSupport,integratedGraphics,tdpWatts
+apple-m4-10-core,Apple,Apple M4 10-Core,3.5,4.4,15200,false,true,20
+apple-m4-pro-12-core,Apple,Apple M4 Pro 12-Core,3.5,4.5,24800,false,true,30
+apple-m4-pro-14-core,Apple,Apple M4 Pro 14-Core,3.5,4.5,27500,false,true,35
+apple-m4-max-14-core,Apple,Apple M4 Max 14-Core,3.5,4.5,29800,false,true,50
+apple-m4-max-16-core,Apple,Apple M4 Max 16-Core,3.5,4.5,32100,false,true,65
+apple-m2-ultra-24-core,Apple,Apple M2 Ultra 24-Core,3.5,4,38000,false,true,120
+nvidia-gb10-grace-20-core-arm,NVIDIA,NVIDIA GB10 Grace (20-Core ARM),2.6,3.3,,false,false,60
+intel-core-i7-14700f,Intel,Intel Core i7-14700F,2.1,5.4,36900,false,false,65
+intel-core-i7-14700,Intel,Intel Core i7-14700,2.1,5.4,37200,false,true,65
+intel-xeon-w5-2445,Intel,Intel Xeon w5-2445,3.1,4.6,22100,true,false,225
+intel-core-i9-13900,Intel,Intel Core i9-13900,2,5.6,45000,false,true,65
+intel-core-i7-13700h,Intel,Intel Core i7-13700H,2.4,5,26800,false,true,45
+intel-core-ultra-7-265,Intel,Intel Core Ultra 7 265,2.4,5.4,49732,false,true,65
+intel-core-i7-1365u,Intel,Intel Core i7-1365U,1.8,5.2,11900,false,true,15
+amd-ryzen-9-6900hx,AMD,AMD Ryzen 9 6900HX,3.3,4.9,19200,false,true,45
+amd-ryzen-9-8945hs,AMD,AMD Ryzen 9 8945HS,4,5.2,30200,false,true,45
+amd-ryzen-ai-5-340,AMD,AMD Ryzen AI 5 340,2,4.8,,false,true,28
+amd-ryzen-ai-7-350,AMD,AMD Ryzen AI 7 350,2,5,24970,false,true,45
+amd-ryzen-ai-9-hx-370,AMD,AMD Ryzen AI 9 HX 370,2,5.1,34938,false,true,28
+amd-ryzen-ai-max-pro-495,AMD,AMD Ryzen AI Max+ PRO 495,3.1,5.2,,false,true,55
+intel-core-ultra-5-325,Intel,Intel Core Ultra 5 325,2.1,4.5,19219,false,true,25
+intel-core-ultra-x7-358h,Intel,Intel Core Ultra X7 358H,1.9,4.8,33535,false,true,25
+intel-core-3-304,Intel,Intel Core 3 304,1.5,4.3,12375,false,true,
+intel-core-5-320,Intel,Intel Core 5 320,1.5,4.6,15482,false,true,
+intel-core-7-350,Intel,Intel Core 7 350,1.5,4.8,15276,false,true,
