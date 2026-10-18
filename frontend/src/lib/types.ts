@@ -48,6 +48,16 @@ export interface Manufacturer {
   name: string;
   website: string | null;
 }
+
+export interface SystemImage {
+  id: number;
+  systemId: number;
+  url: string;
+  altText: string;
+  sourceUrl: string;
+  sourceName: string;
+  displayOrder: number
+}
 export interface Cpu {
   id: number;
   manufacturerId: number;
@@ -124,5 +134,6 @@ export interface System {
   systemCpus: SystemCpu[];
   systemGpus: SystemGpu[];
   systemRam: SystemRam[];
-  systemStorage: SystemStorage[]
+  systemStorage: SystemStorage[];
+  systemImages: SystemImage[]
 }
