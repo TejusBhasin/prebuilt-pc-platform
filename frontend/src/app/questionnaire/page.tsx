@@ -14,7 +14,6 @@ import GamingStyleStep from '@/components/questionnaire/GamingStyleStep';
 import TargetResolutionStep from '@/components/questionnaire/TargetResolutionStep';
 import AiModelSizeStep from '@/components/questionnaire/AiModelSizeStep';
 import GuidedQuestionnaireLayout from '@/components/questionnaire/GuidedQuestionnaireLayout';
-import FilterStep from '@/components/questionnaire/FilterStep';
 
 export default function QuestionnairePage() {
     const router = useRouter()
@@ -25,7 +24,9 @@ export default function QuestionnairePage() {
 
     function handleFamiliarity(level: "low" | "medium" | "high") {
         setFamiliarity(level)
-        if (level !== "high") {
+        if (level === "high") {
+            {router.push("/filter"); return}
+        } else {
             handleAnswer({})
         }
     }
@@ -69,7 +70,7 @@ export default function QuestionnairePage() {
     }
 
     return (
-        <div className={`mx-auto px-6 py-8 ${familiarity === "low" || familiarity === "high" ? "max-w-7xl w-full" : "max-w-2xl w-full"}`}>
+        <div className={`mx-auto px-6 py-8 ${familiarity === "low" ? "max-w-7xl w-full" : "max-w-2xl w-full"}`}>
             {!introDismissed ? (
                 <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6">
                     <h1 className="font-heading text-text-primary text-4xl">Computer Recommendation Questionnaire</h1>
@@ -83,8 +84,6 @@ export default function QuestionnairePage() {
                 </div>
             ) : familiarity === null ? (
                 <FamiliarityStep onSelect={handleFamiliarity} />
-            ) : familiarity === "high" ? (
-                <FilterStep />
             ) : familiarity === "low" && step !== null ? (
                 <GuidedQuestionnaireLayout step={step}>{renderStep(step)}</GuidedQuestionnaireLayout>
             ) : familiarity === "medium" && step !== null ? (
