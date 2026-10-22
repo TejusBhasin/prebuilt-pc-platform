@@ -1,9 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": {
+  "redirects": [ 
+    {
     "source": "/",
     "destination": "/questionnaire"
-  },
+  } 
+],
   "services": {
     "backend": {
       "root": "backend",
