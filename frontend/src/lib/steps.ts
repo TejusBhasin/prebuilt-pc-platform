@@ -1,4 +1,3 @@
-import QuestionnairePage from "@/app/questionnaire/page"
 import type { QuestionnaireAnswers, QuestionnaireStep} from "./types"
 import { Tiles } from "./tiles"
 
