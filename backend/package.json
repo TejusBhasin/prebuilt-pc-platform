@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "scripts": {
     "dev": "tsx --env-file=../.env.local src/index.ts",
-    "build": "prisma generate && tsc -p tsconfig.build.json",
+    "build": "prisma generate && tsc -p tsconfig.build.json && echo '{\"type\":\"module\"}' > dist/package.json",
     "start": "node dist/src/index.js",
     "test": "vitest run",
     "migrate:deploy": "prisma migrate deploy",
