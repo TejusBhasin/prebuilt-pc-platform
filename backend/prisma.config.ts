@@ -5,13 +5,13 @@ import { defineConfig, env } from "prisma/config";
 import path from "node:path"
 import { fileURLToPath } from "node:url";
 
-loadEnv({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), ".env")});
+loadEnv({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".env.local")});
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
-    seed: "tsx --env-file=.env prisma/seed.ts",
+    seed: "tsx --env-file=../.env.local prisma/seed.ts",
   },
   datasource: {
     url: env("DATABASE_URL"),
