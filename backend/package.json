@@ -4,15 +4,15 @@
   "description": "",
   "main": "dist/src/index.js",
   "scripts": {
-    "dev": "tsx --env-file=.env src/index.ts",
+    "dev": "tsx --env-file=../.env.local src/index.ts",
     "build": "prisma generate && tsc -p tsconfig.build.json",
     "start": "node dist/src/index.js",
     "test": "vitest run",
     "migrate:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:xlsx": "tsx prisma/xlsx-to-csv.ts",
-    "db:import": "tsx --env-file=.env prisma/import.ts",
-    "db:import:dry": "tsx --env-file=.env prisma/import.ts --dry-run"
+    "db:import": "tsx --env-file=../.env.local prisma/import.ts",
+    "db:import:dry": "tsx --env-file=../.env.local prisma/import.ts --dry-run"
   },
   "keywords": [],
   "author": "",
