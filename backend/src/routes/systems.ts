@@ -40,7 +40,7 @@ const systemIncludes = {
     }
 } satisfies Prisma.SystemInclude
 
-router.get("/", async (c) => {
+router.get("/", async (c) => { 
     const where: Prisma.SystemWhereInput= {}
     const category = c.req.query("category")
     const maxPriceUsd = c.req.query("maxPriceUsd")

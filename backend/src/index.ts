@@ -9,7 +9,10 @@ import manufacturerRouter from "./routes/manufacturers.js";
 import cpuRouter from "./routes/cpus.js"
 import gpuRouter from "./routes/gpus.js"
 
-const app = new Hono()
+// Vercel Services rewrites do not strip the matched prefix: /api/(.*) arrives
+// here as /api/(.*), so the whole route tree is mounted under /api. basePath
+// returns a new instance, so it must be chained at construction.
+const app = new Hono().basePath("/api")
 
 app.use("/*", secureHeaders())
 app.use("/*", cors({ origin: allowedOrigins }))
@@ -31,9 +34,11 @@ app.route("/manufacturers", manufacturerRouter)
 app.route("/cpus", cpuRouter)
 app.route("/gpus", gpuRouter)
 
-const port = Number(process.env.PORT ?? 3001)
-if (!Number.isInteger(port) || port < 1 || port > 65535) {
-    throw new Error("PORT is not a valid port number")
+if (import.meta.main) {
+    const port = Number(process.env.PORT ?? 3001)
+    if (!Number.isInteger(port) || port < 1 || port > 65535) {
+        throw new Error("PORT is not a valid port number")
+    }
+    serve({ fetch: app.fetch, port })
 }
-
-serve({ fetch: app.fetch, port })
+export default app
