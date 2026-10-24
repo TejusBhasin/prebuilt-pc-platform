@@ -3,6 +3,7 @@ import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
 import { secureHeaders } from "hono/secure-headers";
 import { bodyLimit } from "hono/body-limit";
+import { HTTPException } from "hono/http-exception";
 import { requireToken, allowedOrigins } from "./auth.js";
 import systemsRouter from "./routes/systems.js"
 import manufacturerRouter from "./routes/manufacturers.js";
@@ -34,6 +35,15 @@ app.route("/manufacturers", manufacturerRouter)
 app.route("/cpus", cpuRouter)
 app.route("/gpus", gpuRouter)
 
+app.onError((err, c) => {
+    if(err instanceof HTTPException) {
+        return(err.getResponse())
+    } else {
+        console.error({err})
+        return c.json({error: "An error has occurred. Please try again"}, 500)
+    }
+   
+})
 if (import.meta.main) {
     const port = Number(process.env.PORT ?? 3001)
     if (!Number.isInteger(port) || port < 1 || port > 65535) {
