@@ -83,7 +83,10 @@ export default function ResultsPage() {
                             <span className="w-6 shrink-0 font-mono text-text-muted text-sm text-right">
                                 {index + 1}
                             </span>
-                            <div className="w-16 h-16 shrink-0 bg-panel border border-hairline" />
+                            {result.systemImages.length > 0
+                                ? <img src={result.systemImages[0].url} alt={result.systemImages[0].altText || result.name} className="w-16 h-16 shrink-0 border border-hairline object-contain bg-panel" />
+                                : <div className="w-16 h-16 shrink-0 bg-panel border border-hairline" />
+                            }
                             <div className="flex flex-col flex-1 gap-1">
                                 {index === 0 && (
                                     <span className="font-mono text-accent-teal text-xs">Best Match</span>
