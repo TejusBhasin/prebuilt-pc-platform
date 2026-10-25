@@ -1,11 +1,11 @@
 {
-  "name": "backend",
+  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
   "scripts": {
     "dev": "tsx --env-file=../.env.local src/index.ts",
-    "build": "prisma generate && tsc -p tsconfig.build.json && echo '{\"type\":\"module\"}' > dist/package.json",
+    "build": "prisma generate && tsc --noEmit -p tsconfig.build.json && esbuild src/index.ts --bundle --platform=node --format=esm --target=node24 --banner:js=\"import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);\" --outfile=dist/src/index.js && echo '{\"type\":\"module\"}' > dist/package.json",
     "start": "node dist/src/index.js",
     "test": "vitest run",
     "migrate:deploy": "prisma migrate deploy",
@@ -28,7 +28,8 @@
     "prisma": "^7.8.0",
     "tsx": "^4.23.0",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "esbuild": "0.28.2"
   },
   "dependencies": {
     "@hono/node-server": "^2.0.8",
@@ -38,7 +39,7 @@
   },
   "allowScripts": {
     "@prisma/engines@7.8.0": true,
-    "esbuild@0.28.1": true,
+    "esbuild@0.28.2": true,
     "prisma@7.8.0": true
   }
 }
