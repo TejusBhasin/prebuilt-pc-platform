@@ -312,6 +312,10 @@ function FilterStep() {
                 <div className="divide-y divide-hairline pb-6">
                 {sortedResults.map((result) => (
                     <Link key={result.id} href={"/systems/" + result.id} className="flex items-center gap-4 py-4 px-6">
+                        {result.systemImages.length > 0
+                                ? <img src={result.systemImages[0].url} alt={result.systemImages[0].altText || result.name} className="w-16 h-16 shrink-0 border border-hairline object-contain bg-panel" />
+                                : <div className="w-16 h-16 shrink-0 bg-panel border border-hairline" />
+                            }
                         <div className="flex flex-col flex-1 gap-1 min-w-0">
                             <div className="flex justify-between items-baseline gap-2">
                                 <h3 className="font-heading text-text-primary">{result.name}</h3>
