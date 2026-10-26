@@ -101,8 +101,8 @@ export default function ResultsPage() {
                             </div>
                         </Link>
                     ))}
-                    <Link href="/questionnaire" className="mt-8 inline-block border border-accent-teal text-accent-teal font-heading px-4 py-2 hover:bg-accent-teal hover:text-bg transition-colors">
-                        Back to Questionnaire
+                    <Link href="/results" className="mt-8 inline-block border border-accent-teal text-accent-teal font-heading px-4 py-2 hover:bg-accent-teal hover:text-bg transition-colors">
+                        Back to Results
                     </Link>
                 </div>
             </div>
