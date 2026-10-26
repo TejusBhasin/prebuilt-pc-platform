@@ -7,13 +7,16 @@ import { apiUrl } from "@/lib/api"
 async function SystemDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
     const response = await fetch(apiUrl(`/systems/${id}`), { cache: 'no-store' })
-    if (!response.ok) {
-        throw new Error(`Failed to fetch systems: ${response.status}`)
-    }
-    const system: System = await response.json()
-    if (!system) {
+    if (response.status === 404 || response.status === 400) {
         notFound()
     }
+    if (!(response.headers.get("content-type")?.includes("application/json"))){
+        throw new Error(`Failed to fetch system: expected JSON. ${response.url} ${response.status}`)
+    }
+    if (!response.ok) {
+        throw new Error(`Failed to fetch system: ${response.status}`)
+    }
+    const system: System = await response.json()
     return (
         <div className="max-w-5xl mx-auto px-6 py-10">
             <h1 className="font-heading text-3xl text-text-primary mb-8">{system.name}</h1>
